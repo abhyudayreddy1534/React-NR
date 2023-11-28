@@ -1,0 +1,13 @@
+#heading {
+    color: lightslategrey;
+    margin: 1px;
+}
+
+#parent {
+    color: red;
+}
+
+#child {
+    color: bisque;
+    margin: 1px;
+}
