@@ -13,6 +13,7 @@ const heading = React.createElement("div", { id: "parent" }, [
       { id: "heading" },
       "I'm a short H2 from Child 2 "
     ),
+    React.createElement("p",{ id: "heading" }, "It's a description about the tags used in the DOM")
   ]),
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
