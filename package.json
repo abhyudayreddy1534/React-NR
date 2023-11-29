@@ -1,0 +1,34 @@
+{
+  "name": "react-nr",
+  "version": "1.0.0",
+  "description": "my react learning from namaste-react",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhyudayreddy1534/React-NR.git"
+  },
+  "keywords": [
+    "react",
+    "myreact"
+  ],
+  "author": "Abhyuday Reddy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhyudayreddy1534/React-NR/issues"
+  },
+  "homepage": "https://github.com/abhyudayreddy1534/React-NR#readme",
+  "devDependencies": {
+    "parcel": "^2.10.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
