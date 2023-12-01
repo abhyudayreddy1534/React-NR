@@ -1,21 +1,31 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-const heading = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", { id: "heading" }, "Child 1 >> H1"),
-    React.createElement("h2", { id: "heading" }, "I'm a short H2 from Child 1"),
-  ]),
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", { id: "heading" }, "Child 2 >> H1"),
-    React.createElement(
-      "h2",
-      { id: "heading" },
-      "I'm a short H2 from Child 2 "
-    ),
-    React.createElement("p",{ id: "heading" }, "It's a description about the tags used in the DOM")
-  ]),
-]);
+// JSX component
+
+const heading = (
+  <h1 className="heading" id="heading">
+    This is my React learning with JSX
+  </h1>
+);
+
+const Title = () => (
+  <h1 className="heading">Welcome to React learning hub 👨🏻‍💻</h1>
+);
+
+const Content = () => {
+  return (
+    <div className="contentDiv">
+      <Title />
+      <h2>We are getting there !!! 🚀</h2>
+      <p className="content" id="content">
+        Here you will be learninng how the React functions and you will get to
+        know the practical approach of React
+      </p>
+    </div>
+  );
+};
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(heading);
+root.render(<Content />);
