@@ -114,4 +114,29 @@ const Val = () => true
 - javascript code can be added inside JSX using ```{}``` add code between curly braces
 - We can mix n match any component. react element can be added in functional component and plain html and vice-versa. 
 - JSX will provide cross site scrpting safety, it will sanitize the JS data. XSS safe, is automatically taken care by React.
+- calling a javascript like ```{Title()}``` or ```<Title />``` or ```<Title></Title>``` are same while executing.
+
+# Ep 04: 01/Dec/2023
+
+- can pass arguments to a component using props and can be access like ```props.name``` etc...
+```
+<RestaurantCard
+          name="Pista House"
+          cuisine="Biryani, North Indian"
+          rating="4.4"
+          eta="32"
+          image={pistahouseLogo}
+        />
+```
+```
+const RestaurantCard = (props) => { }
+  /**
+   * can try destructuring like this too
+   * const {name, cuisine} = props
+   * to avoid using props.name
+   * 
+   * or props param can be replaced with {name, cuine} for on the fly destructuring as well.
+   */
+   ```
+
 
