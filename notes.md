@@ -138,5 +138,6 @@ const RestaurantCard = (props) => { }
    * or props param can be replaced with {name, cuine} for on the fly destructuring as well.
    */
    ```
-
+- whenever using array.map() please assign a unique to key parameter. never use index as a key as the order might change. React doesn;t recommend putting index as key. using KEY is must considering rendering and memory optimising.
+-
 
