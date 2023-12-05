@@ -141,3 +141,32 @@ const RestaurantCard = (props) => { }
 - whenever using array.map() please assign a unique to key parameter. never use index as a key as the order might change. React doesn;t recommend putting index as key. using KEY is must considering rendering and memory optimising.
 -
 
+# EP 05: 04/Dec/23 React Hooks
+
+- read about the file structure in react documentstion "React file structure". as React doesn;t have any specific structure. Its based on individual or project req's.
+- follow a single process, either go by components specific or feature or type specdific.
+> Two types of import
+>> ```import Component from "Path"``` </br>
+>> ```import {export constant} from "path"```
+
+> Two types of export
+>> ```export default const_name``` //when one variable </br>
+>> ```export const = ""``` when multi //called named export
+
+- React hook is a normal JS function which is given by React from FB developers inside React. 
+- ```useState()``` --> super powerful state variables. 
+- ```userEffect()```
+- Whenever a state variable updates REACT re-renders the comonent.
+- React used reconciliation algorthm (React Fiber)
+- Once the component is rendered, React will create the Virtual DOM (which is a representation of actual DOM). ex: <Component />  is the virutal DOM bcz its not an actual HTML, its a React Object.
+- <b>Diff algorithm:</b> it finds the difference between old virtual dom and new virtual dom, it will calculate the diffrence and update the component to re-render.
+- <b>React Fibre (released in React v16.0):</b> its the way of finding the difference and updating the component.
+- To read more about React Fiber: refer to (https://github.com/acdlite/react-fiber-architecture)
+- Why React is fast ----> bcz its doing efficient DOM manipulation, it does incremental rendering (update the frame in small chunks with multiple frames), React can efficiently finds out the diff between virtual DOM and update the components. [UI layer and Data layer will be kept in sync].
+- 
+
+
+
+
+
+

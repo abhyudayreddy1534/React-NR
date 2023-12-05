@@ -51,10 +51,19 @@
 } */
 
 .img-container>img {
-    object-fit: contain;
+    object-fit: fill;
     width: 90%;
     /* height: 110px; */
     padding-left: 5%;
     padding-top: 2%;
     overflow: hidden;
+}
+
+.img-container img {
+    height: 130px
+}
+
+.filter-btn {
+    margin: 10px;
+    cursor: pointer;
 }
