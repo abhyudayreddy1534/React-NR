@@ -1,77 +1,104 @@
 import RestaurantCard from "./RestaurantCard";
-import responseList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // State variable :: super powerful variable
-  let [listOfRestaurants, setListOfRestaurants] = useState(responseList);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
   /****
    * let arr = userState(responseList)
    * let listOfRestaurants = arr[0]
    * let setListOfRestaurants = arr[1]
-   * 
-   * The above syntax un uncommeted line is simply a destructuring on the fly. 
-   * */ 
-  return (
+   *
+   * The above syntax un uncommeted line is simply a destructuring on the fly.
+   * */
+
+  useEffect(() => {
+    console.log("fetch called");
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch("https://dummyjson.com/products");
+    const jsonData = await data.json();
+    console.log(jsonData);
+    setListOfRestaurants(jsonData["products"]);
+  };
+
+  //conditional rendering: render content according to condition is called conditional rendering
+
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
         <button
           className="filter-btn"
           onClick={() => {
             console.log("all 3 and abovebutton clicked");
-            setListOfRestaurants(
-              responseList.filter(
-                (res) => res.ratings.rating_bayesian10_point >= 3
-              )
+            console.log(listOfRestaurants);
+            const filteredProducts = listOfRestaurants.filter(
+              (product) => product.rating >= 3
             );
+            console.log("filtered");
+            console.log(filteredProducts);
+            setListOfRestaurants(filteredProducts);
           }}
         >
-          Top Rated restaurants with above 3.0
+          Rated above 3.0
         </button>
         <button
           className="filter-btn"
           onClick={() => {
             console.log("4 above button clicked");
-            setListOfRestaurants(
-              responseList.filter(
-                (res) => res.ratings.rating_bayesian10_point > 4
-              )
+            console.log(listOfRestaurants);
+            const filteredProducts = listOfRestaurants.filter(
+              (product) => product.rating >= 4
             );
+            console.log("filtered");
+            console.log(filteredProducts);
+            setListOfRestaurants(filteredProducts);
           }}
         >
-          Top Rated restaurants with above 4.0
+          Rated above 4.0
         </button>
         <button
           className="filter-btn"
           onClick={() => {
             console.log("4.5 button clicked");
-            setListOfRestaurants(
-              responseList.filter(
-                (res) => res.ratings.rating_bayesian10_point > 4.5
-              )
+            console.log(listOfRestaurants);
+            const filteredProducts = listOfRestaurants.filter(
+              (product) => product.rating >= 4.5
             );
+            console.log("filtered");
+            console.log(filteredProducts);
+            setListOfRestaurants(filteredProducts);
           }}
         >
-          Top Rated restaurants with above 4.5
+          Rated above 4.5
         </button>
         <button
           className="filter-btn"
           onClick={() => {
-            setListOfRestaurants(
-              responseList.filter((res) =>
-                res.cuisines.find((e) => e === "Indian")
-              )
+            console.log("Specific brand");
+            console.log(listOfRestaurants);
+            const filteredProducts = listOfRestaurants.filter(
+              (product) => product.brand === "Apple"
             );
+            console.log("filtered");
+            console.log(filteredProducts);
+            setListOfRestaurants(filteredProducts);
           }}
         >
-          Indian
+          Apple
         </button>
       </div>
 
       <div className="restaurant-container">
         {
-          listOfRestaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant.restaurant_id} data={restaurant} />
+          listOfRestaurants.map((product) => (
+            <RestaurantCard key={product.id} data={product} />
           ))
           /* {responseList.map(restaurant) => (<RestaurantCard key={restaurant.restaurant_id} data={restaurant} />)} */
         }
