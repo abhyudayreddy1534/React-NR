@@ -5,6 +5,8 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // State variable :: super powerful variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filterProducts, setFilteredProducts] = useState([]);
+  const [searchText, setSearchtext] = useState("");
 
   /****
    * let arr = userState(responseList)
@@ -24,8 +26,12 @@ const Body = () => {
     const jsonData = await data.json();
     console.log(jsonData);
     setListOfRestaurants(jsonData["products"]);
+    setFilteredProducts(jsonData["products"]);
   };
 
+  const emptySearchText = () => {
+    setSearchtext("");
+  };
   //conditional rendering: render content according to condition is called conditional rendering
 
   return listOfRestaurants.length === 0 ? (
@@ -33,17 +39,43 @@ const Body = () => {
   ) : (
     <div className="body">
       <div className="filter">
+        <input
+          type="text"
+          className="search-box"
+          placeholder="Search here"
+          value={searchText}
+          onChange={(e) => {
+            setSearchtext(e.target.value);
+          }}
+        ></input>
         <button
           className="filter-btn"
           onClick={() => {
+            //filter the content
+            const fProducts = listOfRestaurants.filter(
+              (product) =>
+                product.title
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase()) ||
+                product.description
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase())
+            );
+            setFilteredProducts(fProducts);
+          }}
+        >
+          Search
+        </button>
+        <button
+          className="filter-btn"
+          onClick={() => {
+            emptySearchText();
             console.log("all 3 and abovebutton clicked");
             console.log(listOfRestaurants);
-            const filteredProducts = listOfRestaurants.filter(
+            const fProducts = listOfRestaurants.filter(
               (product) => product.rating >= 3
             );
-            console.log("filtered");
-            console.log(filteredProducts);
-            setListOfRestaurants(filteredProducts);
+            setFilteredProducts(fProducts);
           }}
         >
           Rated above 3.0
@@ -51,14 +83,12 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
+            emptySearchText();
             console.log("4 above button clicked");
-            console.log(listOfRestaurants);
-            const filteredProducts = listOfRestaurants.filter(
+            const fProducts = listOfRestaurants.filter(
               (product) => product.rating >= 4
             );
-            console.log("filtered");
-            console.log(filteredProducts);
-            setListOfRestaurants(filteredProducts);
+            setFilteredProducts(fProducts);
           }}
         >
           Rated above 4.0
@@ -66,14 +96,12 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
+            emptySearchText();
             console.log("4.5 button clicked");
-            console.log(listOfRestaurants);
-            const filteredProducts = listOfRestaurants.filter(
+            const fProducts = listOfRestaurants.filter(
               (product) => product.rating >= 4.5
             );
-            console.log("filtered");
-            console.log(filteredProducts);
-            setListOfRestaurants(filteredProducts);
+            setFilteredProducts(fProducts);
           }}
         >
           Rated above 4.5
@@ -81,23 +109,26 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
+            emptySearchText();
             console.log("Specific brand");
             console.log(listOfRestaurants);
-            const filteredProducts = listOfRestaurants.filter(
+            const fProducts = listOfRestaurants.filter(
               (product) => product.brand === "Apple"
             );
-            console.log("filtered");
-            console.log(filteredProducts);
-            setListOfRestaurants(filteredProducts);
+            console.log(fProducts);
+            setFilteredProducts(fProducts);
           }}
         >
           Apple
         </button>
+        <label className="info-lbl">
+          Showing {filterProducts.length} products
+        </label>
       </div>
 
       <div className="restaurant-container">
         {
-          listOfRestaurants.map((product) => (
+          filterProducts.map((product) => (
             <RestaurantCard key={product.id} data={product} />
           ))
           /* {responseList.map(restaurant) => (<RestaurantCard key={restaurant.restaurant_id} data={restaurant} />)} */

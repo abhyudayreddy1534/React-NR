@@ -192,3 +192,4 @@ const RestaurantCard = (props) => { }
 
 - useEffect(arg1 <arrow function>, arg2 <display object>)
 - Conditional rendering: render content according to condition is called conditional rendering
+- whenver React state variable changes, the React will re-renderthe component.
