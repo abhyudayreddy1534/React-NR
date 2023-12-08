@@ -1,7 +1,7 @@
 const RestaurantCard = (props) => {
   const resObj = props.data;
 
-  const { id, title, description, rating, thumbnail, brand, category, price } =
+  const { id, title, description, rating, price, brand, category, thumbnail } =
     resObj;
   // const {name, cuisine, rating, }
   /**
@@ -17,7 +17,7 @@ const RestaurantCard = (props) => {
         <img className="res-card-logo" src={thumbnail}></img>
       </div>
       <h3>
-        {title} <span className="price">(${price})</span>
+        {title} <span className="price">({price})</span>
       </h3>
       <h4>{description}</h4>
       <h4>{rating} *</h4>

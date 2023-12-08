@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   // State variable :: super powerful variable
@@ -22,11 +23,13 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("https://dummyjson.com/products");
+    const data = await fetch(
+      "https://corsproxy.io/?https://dummyjson.com/products"
+    );
     const jsonData = await data.json();
     console.log(jsonData);
-    setListOfRestaurants(jsonData["products"]);
-    setFilteredProducts(jsonData["products"]);
+    setListOfRestaurants(jsonData?.products);
+    setFilteredProducts(jsonData?.products);
   };
 
   const emptySearchText = () => {
@@ -52,6 +55,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             //filter the content
+            console.log(listOfRestaurants);
             const fProducts = listOfRestaurants.filter(
               (product) =>
                 product.title
@@ -129,7 +133,9 @@ const Body = () => {
       <div className="restaurant-container">
         {
           filterProducts.map((product) => (
-            <RestaurantCard key={product.id} data={product} />
+            <Link key={product.id} to={"/products/" + product.id}>
+              <RestaurantCard data={product} />
+            </Link>
           ))
           /* {responseList.map(restaurant) => (<RestaurantCard key={restaurant.restaurant_id} data={restaurant} />)} */
         }

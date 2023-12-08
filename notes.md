@@ -193,3 +193,46 @@ const RestaurantCard = (props) => { }
 - useEffect(arg1 <arrow function>, arg2 <display object>)
 - Conditional rendering: render content according to condition is called conditional rendering
 - whenver React state variable changes, the React will re-renderthe component.
+
+# Ep 07: 06/Dec/23 Routing and hooks deep dive
+
+- useEffect will call everytime the component re-rendered when the dependency array is not present.
+- Never define your useState hooks outside the component, thats the reason they are called local state variables.
+- Never create a useState() inside an IF_ELSE or LOOPS or FUNCTIONS as it will create inconsistencies.
+- \***\*\*\*\*\***\*\*\***\*\*\*\*\*** <b>To avoid using CORS extention try giving https://corsproxy.io/? as prefix toyour API URL. </b> \***\*\*\*\*\***\*\*\***\*\*\*\*\***
+
+```
+useEffect(() => {//Call back function with out dependency array})
+
+useEffect(() => {//Call back function with empty dependency array will called only once at the start render}, [])
+
+useEffect(() => {//Call back function with a dependency array will called whenever the btnReact state updated}, [btnReact])
+```
+
+#### React Router
+
+- https://reactrouter.com/en/main site install it `npm install react-router-dom`
+- Rounting example syntax:
+
+```
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+// Router creation
+const appRouter = createBrowserRouter([
+  { path: "/", element: <AppLayout /> },
+  { path: "/about", element: <About />, childeren: [//children will be added to the same above//]},
+]);
+
+```
+
+- For error related details of routing
+
+```
+import { useRouteError } from "react-router-dom";
+<!-- inside the component to know the issue -->
+const error = useRouteError();
+```
+
+- Types of Routing in web apps
+  > Client side rounting: what react does like, single page apps. </br>
+  > Server side routing: API call sends which page to transition to. etc...
