@@ -236,3 +236,34 @@ const error = useRouteError();
 - Types of Routing in web apps
   > Client side rounting: what react does like, single page apps. </br>
   > Server side routing: API call sends which page to transition to. etc...
+
+# EP08: 08/Dec/23
+
+```
+//Class based component
+import React from "react";
+
+class UserClass extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div className="user-card">
+        <h2>Name : {this.props.name}</h2>
+        <h3>Location : {this.props.location}</h3>
+      </div>
+    );
+  }
+}
+
+export default UserClass;
+```
+
+- never update state variable in class based components directly, it won't work and triggers inconsistencies
+- componentDidMount() method is called from this, as all the components are rendered.
+- first Parent constructor, Parent render, child1 constructor, child1 render, child2 constructor, child2 render, child 1 component mount, child2 component, parent mount.... in the order.
+- React is fast: it has 2 phases
+  > Render phase
+  > commit phase
