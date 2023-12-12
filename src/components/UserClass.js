@@ -19,12 +19,13 @@ class UserClass extends React.Component {
   }
 
   render() {
-    const { name, location, login } = this.props.data;
+    const { name, avatar_url, login } = this.props.data;
     return (
       <div className="user-card">
-        {/* {this.state.userInfo.map((u) => ( */}
-        <h2>contact: @{login}</h2>
-        {/* ))} */}
+        <div className="contact-card">
+          <img src={avatar_url} width="80px" height="80px" marigin="10"></img>
+          <h3>@{login}</h3>
+        </div>
       </div>
     );
   }

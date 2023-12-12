@@ -267,3 +267,25 @@ export default UserClass;
 - React is fast: it has 2 phases
   > Render phase
   > commit phase
+  - useEffet() will call unmount method in functional component in the return statement of useeffect. where as Class component has componentWIllUnmount()
+- React architecture diagram will be available in project.wojtek. along with versions.
+
+# EP09: 12/Dec/2023
+
+- In the production its important to chunk the single js file. this process is called Chunking, lazy loading, code splitting, dynamic bundling, on-demand loading etc... all these refers to single thing.
+- just the below 4 lines of code will improve the performance magically.
+
+```
+//example of lazy loading
+lazy hook from React
+import React, {lazy, Suspense} from react;
+
+let's not import GROCERY like below
+//import Grocery from "./components/Grocery.js"
+
+we can try below
+const Grocery = lazy(() => import("./components/Grocery.js"));
+
+while calling the component
+<Suspense fallback={/** try some component or loading or shimmer ***/}><Grovery /></Suspense>
+```

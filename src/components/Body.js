@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // State variable :: super powerful variable
@@ -36,6 +37,12 @@ const Body = () => {
     setSearchtext("");
   };
   //conditional rendering: render content according to condition is called conditional rendering
+
+  const onlineStatus = useOnlineStatus();
+
+  if (!onlineStatus) {
+    return <h1>You are offline please check internet connection!!!</h1>;
+  }
 
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
