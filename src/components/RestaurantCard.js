@@ -12,18 +12,23 @@ const RestaurantCard = (props) => {
    * or props param can be replaced with {name, cuine} for on the fly destructuring as well.
    */
   return (
-    <div className="restaurant-card" style={{ background: "f0f0f0" }}>
-      <div className="img-container">
-        <img className="res-card-logo" src={thumbnail}></img>
+    <div className="bg-white m-5 w-[200] h-[400] shadow-2xl hover:shadow-black rounded-md">
+      <div className="m-3 p-2">
+        <img
+          className="object-fill w-44 h-28 rounded-lg shadow-lg"
+          src={thumbnail}
+        ></img>
       </div>
-      <h3>
-        {title} <span className="price">({price})</span>
-      </h3>
-      <h4>{description}</h4>
-      <h4>{rating} *</h4>
-      <h4>
-        {category} : {brand}
-      </h4>
+      <div className="px-3">
+        <h3 className="font-medium">
+          {title} <span className="text-red-500">(${price})</span>
+        </h3>
+        <h4 className="font-thin">{description}</h4>
+        <h4 className="font-normal">Rating: {rating} *</h4>
+        <h4 className="font-semibold text-pink-600">
+          {category} : {brand}
+        </h4>
+      </div>
     </div>
   );
 };

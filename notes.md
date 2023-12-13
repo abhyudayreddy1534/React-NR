@@ -289,3 +289,9 @@ const Grocery = lazy(() => import("./components/Grocery.js"));
 while calling the component
 <Suspense fallback={/** try some component or loading or shimmer ***/}><Grovery /></Suspense>
 ```
+
+# EP10: 12/Dec/2023
+
+- Sass >> Syntactically awesome style sheets (https://sass-lang.com/)
+- with React we use styled Components (https://styled-components.com/)
+- https://mui.com/material-ui/, Bootstrap, ChakraUI, Ant design for React etc...

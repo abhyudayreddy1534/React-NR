@@ -17,9 +17,7 @@ const About = () => {
   };
 
   return (
-    <div>
-      <h1>About Us</h1>
-      {/* <User name="Sravanthi" location="Tx, USA" /> */}
+    <div className="flex flex-wrap justify-center bg-slate-400">
       {users.map((u) => (
         <UserClass key={u.id} data={u} />
       ))}

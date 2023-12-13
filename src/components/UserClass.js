@@ -21,11 +21,14 @@ class UserClass extends React.Component {
   render() {
     const { name, avatar_url, login } = this.props.data;
     return (
-      <div className="user-card">
-        <div className="contact-card">
-          <img src={avatar_url} width="80px" height="80px" marigin="10"></img>
-          <h3>@{login}</h3>
-        </div>
+      <div className="m-4 w-[150] h-[110] bg-slate-900 shadow-2xl rounded-xl">
+        <img
+          src={avatar_url}
+          className="w-20 h-20 rounded-full mx-auto pt-1"
+        ></img>
+        <h3 className="mx-auto font-semibold text-lg text-center text-white">
+          @{login}
+        </h3>
       </div>
     );
   }

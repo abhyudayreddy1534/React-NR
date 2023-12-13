@@ -47,11 +47,11 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="filter">
+    <div className="bg-orange-50">
+      <div className="flex items-center bg-orange-300 shadow-md">
         <input
           type="text"
-          className="search-box"
+          className="m-4 border border-solid border-black shadow-black shadow-lg"
           placeholder="Search here"
           value={searchText}
           onChange={(e) => {
@@ -59,7 +59,7 @@ const Body = () => {
           }}
         ></input>
         <button
-          className="filter-btn"
+          className="bg-orange-700 font-semibold w-28 text-white shadow-lg hover:bg-orange-800"
           onClick={() => {
             //filter the content
             console.log(listOfRestaurants);
@@ -78,7 +78,7 @@ const Body = () => {
           Search
         </button>
         <button
-          className="filter-btn"
+          className="bg-orange-600 ml-10 font-semibold w-44 text-white hover:bg-orange-700"
           onClick={() => {
             emptySearchText();
             console.log("all 3 and abovebutton clicked");
@@ -92,7 +92,7 @@ const Body = () => {
           Rated above 3.0
         </button>
         <button
-          className="filter-btn"
+          className="bg-orange-600 ml-4 font-semibold w-44 text-white hover:bg-orange-700"
           onClick={() => {
             emptySearchText();
             console.log("4 above button clicked");
@@ -105,7 +105,7 @@ const Body = () => {
           Rated above 4.0
         </button>
         <button
-          className="filter-btn"
+          className="bg-orange-600 ml-4 font-semibold w-44 text-white hover:bg-orange-700"
           onClick={() => {
             emptySearchText();
             console.log("4.5 button clicked");
@@ -118,7 +118,7 @@ const Body = () => {
           Rated above 4.5
         </button>
         <button
-          className="filter-btn"
+          className="bg-orange-600 ml-4 font-semibold w-44 text-white hover:bg-orange-700"
           onClick={() => {
             emptySearchText();
             console.log("Specific brand");
@@ -132,12 +132,12 @@ const Body = () => {
         >
           Apple
         </button>
-        <label className="info-lbl">
+        <label className="text-gray-500 ml-4 font-medium w-44">
           Showing {filterProducts.length} products
         </label>
       </div>
 
-      <div className="restaurant-container">
+      <div className="flex flex-wrap justify-center">
         {
           filterProducts.map((product) => (
             <Link key={product.id} to={"/products/" + product.id}>
