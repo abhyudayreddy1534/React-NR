@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withCategory } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,6 +9,8 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filterProducts, setFilteredProducts] = useState([]);
   const [searchText, setSearchtext] = useState("");
+
+  const RestaurantCardWithCatagory = withCategory(RestaurantCard);
 
   /****
    * let arr = userState(responseList)
@@ -138,14 +140,12 @@ const Body = () => {
       </div>
 
       <div className="flex flex-wrap justify-center">
-        {
-          filterProducts.map((product) => (
-            <Link key={product.id} to={"/products/" + product.id}>
-              <RestaurantCard data={product} />
-            </Link>
-          ))
-          /* {responseList.map(restaurant) => (<RestaurantCard key={restaurant.restaurant_id} data={restaurant} />)} */
-        }
+        {filterProducts.map((product) => (
+          <Link key={product.id} to={"/products/" + product.id}>
+            {/* returning the higher order component with catagory */}
+            <RestaurantCardWithCatagory data={product} />
+          </Link>
+        ))}
       </div>
     </div>
   );

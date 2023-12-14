@@ -12,10 +12,10 @@ const RestaurantCard = (props) => {
    * or props param can be replaced with {name, cuine} for on the fly destructuring as well.
    */
   return (
-    <div className="bg-white m-5 w-[200] h-[400] shadow-2xl hover:shadow-black rounded-md">
+    <div className="bg-white m-5 w-[230] h-[400] shadow-2xl hover:shadow-black hover:bg-slate-200 rounded-md">
       <div className="m-3 p-2">
         <img
-          className="object-fill w-44 h-28 rounded-lg shadow-lg"
+          className="object-fill w-44 h-28 rounded-lg shadow-lg mt-6"
           src={thumbnail}
         ></img>
       </div>
@@ -25,12 +25,23 @@ const RestaurantCard = (props) => {
         </h3>
         <h4 className="font-thin">{description}</h4>
         <h4 className="font-normal">Rating: {rating} *</h4>
-        <h4 className="font-semibold text-pink-600">
-          {category} : {brand}
-        </h4>
+        <h4 className="font-semibold text-pink-600">{brand}</h4>
       </div>
     </div>
   );
+};
+
+export const withCategory = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-slate-700 text-white mx-6 my-1 px-2 shadow-black rounded">
+          {props.data.category}
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;

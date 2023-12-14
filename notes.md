@@ -290,8 +290,41 @@ while calling the component
 <Suspense fallback={/** try some component or loading or shimmer ***/}><Grovery /></Suspense>
 ```
 
-# EP10: 12/Dec/2023
+# EP10: 12/Dec/2023 & 13/Dec/2023
 
 - Sass >> Syntactically awesome style sheets (https://sass-lang.com/)
 - with React we use styled Components (https://styled-components.com/)
 - https://mui.com/material-ui/, Bootstrap, ChakraUI, Ant design for React etc...
+
+# EP11: 13/Dec/2023
+
+- Higher order components: its a function that takes a component and returns a component.
+
+```
+<!-- calling -->
+import RestaurantCard, { withCategory } from "./RestaurantCard";
+
+<!-- component creation -->
+const RestaurantCardWithCatagory = withCategory(RestaurantCard);
+
+<!-- {/* returning the higher order component with catagory */} -->
+<RestaurantCardWithCatagory data={product} />
+
+
+<!-- example for implementation -->
+export const withCategory = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-slate-700 text-white mx-6 my-1 px-2 shadow-black rounded">
+          {props.data.category}
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+```
+
+- Controlled and Uncontrolled components
+- lifting the STATE up
