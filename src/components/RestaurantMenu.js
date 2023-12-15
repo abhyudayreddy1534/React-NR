@@ -25,7 +25,7 @@ const RestaurantMenu = () => {
   //   returning with if condition as the object is NULL by default so ternary operator won't work here.
   if (prodInfo === null) return <Shimmer />;
 
-  const { title, category, price, brand } = prodInfo;
+  const { title, category, price, brand, description } = prodInfo;
 
   return !prodInfo ? (
     <Shimmer />
@@ -36,6 +36,7 @@ const RestaurantMenu = () => {
         <h3 className="font-normal">
           {category} | {brand} | ${price}
         </h3>
+        <p className="font-thin text-slate-900">{description}</p>
       </div>
       <div className="flex flex-wrap justify-center">
         {prodImages.map((x) => (

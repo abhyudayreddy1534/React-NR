@@ -16,17 +16,21 @@ export const Header = () => {
       <div className="flex items-center">
         <ul className="flex p-4 m-4">
           <li className="px-4">{onlineStatus ? "🟢" : "🔴"}</li>
-          <li className="px-4">
-            <Link to={"/"}>Home</Link>
+          <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
+            <Link to={"/"}>Products</Link>
           </li>
-          <li className="px-4">Order</li>
-          <li className="px-4">
-            <Link to={"/about"}>About</Link>
+          <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
+            <Link to="/food-order">Food Items</Link>
           </li>
-          <li className="px-4">
+          <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
+            <Link to={"/profile"}>Profiles</Link>
+          </li>
+          <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          <li className="px-4">Profile</li>
+          {/* <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
+            Profile
+          </li> */}
           <button
             className="login-btn"
             onClick={() => {

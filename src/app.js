@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
+import FoodOrder from "./components/FoodOrder";
 
 const About = lazy(() => import("./components/About"));
 
@@ -28,7 +29,7 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <Body /> },
       {
-        path: "/about",
+        path: "/profile",
         element: (
           <Suspense
             fallback={<h1>Hey wait...... I'm loading About us here</h1>}
@@ -39,6 +40,7 @@ const appRouter = createBrowserRouter([
       },
       { path: "/contact", element: <Contact /> },
       { path: "/products/:resId", element: <RestaurantMenu /> },
+      { path: "/food-order", element: <FoodOrder /> },
     ],
   },
 ]);
