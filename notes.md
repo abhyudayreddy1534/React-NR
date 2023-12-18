@@ -296,7 +296,7 @@ while calling the component
 - with React we use styled Components (https://styled-components.com/)
 - https://mui.com/material-ui/, Bootstrap, ChakraUI, Ant design for React etc...
 
-# EP11: 13/Dec/2023
+# EP11: 13/Dec/2023 & 14/Dec/2023
 
 - Higher order components: its a function that takes a component and returns a component.
 
@@ -326,5 +326,11 @@ export const withCategory = (RestaurantCard) => {
 };
 ```
 
-- Controlled and Uncontrolled components
+- Higher order functions - remove duplicates in different ways
+  https://builtin.com/software-engineering-perspectives/remove-duplicates-from-array-javascript
+- Accordion example: https://www.freecodecamp.org/news/build-accordion-menu-in-react-without-external-libraries/
+  https://www.sitepoint.com/react-js-accordion-component/
+
+- Controlled and Uncontrolled components: Controlled component is example as accordion which can be auto collapsed from parent, like parent FOOD ORDER can control the RestaurantCatagory using a state, RestaurantCatagory will be updated using the parameter from PROPS. rest are uncontrolled.
 - lifting the STATE up
+- Prop drilling

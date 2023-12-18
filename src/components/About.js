@@ -10,10 +10,10 @@ const About = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const data = await fetch("https://api.github.com/users");
+    const data = await fetch("https://dummyjson.com/users");
     const json = await data.json();
-    console.log(json);
-    setUsers(json);
+    console.log(json.users);
+    setUsers(json.users);
   };
 
   return (

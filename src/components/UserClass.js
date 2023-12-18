@@ -19,16 +19,59 @@ class UserClass extends React.Component {
   }
 
   render() {
-    const { name, avatar_url, login } = this.props.data;
+    const {
+      firstName,
+      lastName,
+      age,
+      gender,
+      email,
+      phone,
+      username,
+      birthDate,
+      image,
+      bloodGroup,
+      address: { address, city, postalCode, state },
+    } = this.props.data;
     return (
-      <div className="m-4 w-[150] h-[110] bg-slate-900 shadow-2xl rounded-xl">
-        <img
-          src={avatar_url}
-          className="w-20 h-20 rounded-full mx-auto pt-1"
-        ></img>
-        <h3 className="mx-auto font-semibold text-lg text-center text-white">
-          @{login}
-        </h3>
+      <div className="m-4 w-[250] h-[250] bg-slate-900 shadow-2xl rounded-xl">
+        <div className="flex">
+          <div>
+            <img
+              src={image}
+              className="w-24 h-24 rounded-full mx-auto pt-1"
+            ></img>
+          </div>
+          <div>
+            <h3 className="mx-auto mt-3 font-semibold text-2xl text-left text-white">
+              {firstName + " " + lastName}
+            </h3>
+            <p className="mx-auto font-normal text-md text-left text-white">
+              {age + " / " + gender.toUpperCase()}
+              {gender == "male" ? " 👱🏻‍♂️" : " 👱🏻‍♀️"}
+            </p>
+            <p className="mx-auto font-normal text-md text-left text-white">
+              {"🎂 : " + birthDate}
+            </p>
+            <p className="mx-auto font-normal text-md text-left text-white">
+              {"🩸 : " + bloodGroup}
+            </p>
+          </div>
+          <hr></hr>
+        </div>
+        <div>
+          <p className="mx-3 font-normal text-md text-left text-white">
+            {"👤 : " + username}
+          </p>
+          <p className="mx-3 font-normal text-md text-left text-white">
+            {"✉️ : " + email}
+          </p>
+          <p className="mx-3 font-normal text-md text-left text-white">
+            {"📱 : " + phone}
+          </p>
+          <p className="mx-3 font-normal text-md text-left text-white">
+            {"🏠 : " + address + ", " + city + ", " + postalCode + ", " + state}
+          </p>
+        </div>
       </div>
     );
   }

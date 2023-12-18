@@ -1,7 +1,7 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
-import { Headeer } from "./components/Header";
+import { Header } from "./components/Header";
 import Body from "./components/Body";
 // import About from "./components/About";
 import Contact from "./components/Contact";
@@ -9,15 +9,26 @@ import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
 import FoodOrder from "./components/FoodOrder";
+import UserContext from "./utils/UserContext";
 
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [username, setUsername] = useState();
+
+  useEffect(() => {
+    const data = { name: "Abhyuday Reddy" };
+
+    setUsername(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{ loggedInUser: username }}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 

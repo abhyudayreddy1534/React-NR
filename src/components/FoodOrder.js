@@ -1,6 +1,13 @@
+import PreviousMap from "postcss/lib/previous-map";
+import { useState } from "react";
 import temp from "../temp.json";
+import RestaurantCategory from "./RestaurantCategory";
+import RestaurantHeader from "./RestaurantHeader";
 
 const FoodOrder = () => {
+  const [showIndex, setShowIndex] = useState(null);
+  const [prevIndex, setPrevIndex] = useState(0);
+
   const data = {
     posts: [
       {
@@ -252,15 +259,6 @@ const FoodOrder = () => {
 
   const restaurantNameData = temp.data.cards[0].card.card.info;
 
-  const {
-    name: named,
-    areaName,
-    city,
-    cuisines,
-    avgRatingString: rating,
-    totalRatingsString: totalRatings,
-  } = restaurantNameData;
-
   const menuData =
     temp.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards.filter(
       (a) =>
@@ -272,91 +270,20 @@ const FoodOrder = () => {
 
   // .map((a) => a.card.card.title);
 
-  console.log(menuData);
-
-  const imgBaseURL =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
-
   return (
-    <div className="accordion w-[600] mx-auto my-10">
-      <div className="flex justify-between">
-        <div>
-          <p className="text-xl font-semibold">{named}</p>
-          <h3 className="text-sm font-normal text-gray-700">
-            {cuisines.join(", ")}
-          </h3>
-          <h3 className="text-sm font-normal text-gray-700">
-            {areaName + " " + city}
-          </h3>
-        </div>
-        <div className="border border-solid border-gray-600 rounded-lg">
-          <p className="font-bold mx-5 py-2 text-green-700">{rating} ☆</p>
-          <hr className="bg-gray-600 h-[2]"></hr>
-          <p className="font-normal text-xs mx-1 my-3 text-gray-700">
-            {totalRatings}
-          </p>
-        </div>
-      </div>
-      <div className="accordian-item">
-        <div className="accordion-title">
-          {menuData.map((item) => (
-            <div>
-              <div className="bg-slate-800 h-10">
-                <h3 className="text-white m-2 py-2 font-bold text-lg">
-                  {item.card.card.title +
-                    " (" +
-                    item.card.card.itemCards.length +
-                    ")"}
-                </h3>
-                {/* <p className="text-white font-black text-4xl mb-2">⌄</p> */}
-              </div>
-              {item.card.card.itemCards.map((a) => (
-                <div>
-                  <div
-                    key={a.card.info.id}
-                    className="my-3 h-20 flex justify-between"
-                  >
-                    <div>
-                      <p className="font-normal text-xs">
-                        <span>
-                          {a.card.info.itemAttribute.vegClassifier === "NONVEG"
-                            ? " 🔺 "
-                            : " 🟢 "}
-                        </span>
-                        {a.card.info.itemAttribute.vegClassifier}
-                      </p>
-                      <p className=" text-black text-lg font-medium">
-                        {a.card.info.name}
-                      </p>
-                      <p className=" text-black text-base font-normal">
-                        INR{" "}
-                        {(a.card.info.price
-                          ? a.card.info.price
-                          : a.card.info.defaultPrice) / 100}
-                      </p>
-                      <p className="text-xxs font-extralight ">
-                        {a.card.info.description ? a.card.info.description : ""}
-                      </p>
-                    </div>
-                    {a.card.info.imageId ? (
-                      <img
-                        src={imgBaseURL + a.card.info.imageId}
-                        alt="YYT"
-                        className="w-20 h-14 mr-1 mt-2"
-                      ></img>
-                    ) : (
-                      <p></p>
-                    )}
-                  </div>
-                  <div>
-                    <hr></hr>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+    <div className="w-6/12 mx-auto my-3">
+      <RestaurantHeader key={restaurantNameData.id} data={restaurantNameData} />
+      {menuData.map((item, index) => (
+        <RestaurantCategory
+          key={item.card.card.title}
+          data={item}
+          showItemList={index === showIndex && showIndex !== prevIndex}
+          setShowIndex={() => {
+            setShowIndex(index);
+            setPrevIndex(showIndex); // fix to make the accordion work when tapped on same accordion once again
+          }}
+        />
+      ))}
     </div>
   );
 };

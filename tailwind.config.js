@@ -2,12 +2,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
-    fontSize: {
-      xxs: ".5rem",
-    },
-    lineHeight: {
-      xxs: "0.7rem",
-    },
+    // not needed as we managed with DIV tags
+    // fontSize: {
+    //   xxs: ".5rem",
+    // },
+    // lineHeight: {
+    //   xxs: "0.7rem",
+    // },
     extend: {},
   },
   plugins: [],
