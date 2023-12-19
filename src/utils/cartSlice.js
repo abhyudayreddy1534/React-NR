@@ -12,6 +12,8 @@ const cartSlice = createSlice({
       state.items.splice(action.payload, 1);
     },
     clearCart: (state) => {
+      // or return {items :[]};
+
       state.items.length = 0;
       // we don't need action as no payload is required to perform the operation.
       // state.items.removeAll(); //stata.items.length = 0 anything is fine. basically remove all logic.
