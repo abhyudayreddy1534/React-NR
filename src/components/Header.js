@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const [btnName, setBtnName] = useState("Login");
@@ -13,6 +14,10 @@ export const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   const status = onlineStatus ? "online" : "offline";
+
+  // Subscribing to the store, we need cart only, so we are pointing to cart slice.
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="flex justify-between bg-orange-100 shadow">
       <div className="logo-container">
@@ -35,9 +40,11 @@ export const Header = () => {
           <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
             <Link to={"/contact"}>Contact</Link>
           </li>
-          {/* <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
-            Profile
-          </li> */}
+          <li className="px-4 font-medium hover:bg-orange-600 hover:text-white">
+            <Link to="/cart">
+              Cart {cartItems.length > 0 ? "(" + cartItems.length + ")" : ""}
+            </Link>
+          </li>
           <button
             className="login-btn"
             onClick={() => {

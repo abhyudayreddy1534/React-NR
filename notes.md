@@ -334,3 +334,21 @@ export const withCategory = (RestaurantCard) => {
 - Controlled and Uncontrolled components: Controlled component is example as accordion which can be auto collapsed from parent, like parent FOOD ORDER can control the RestaurantCatagory using a state, RestaurantCatagory will be updated using the parameter from PROPS. rest are uncontrolled.
 - lifting the STATE up
 - Prop drilling
+
+# EP 12 - 18/Dec/2023 - Redux
+
+- Redux library is not mandatory in React. It manages state and works on Data layer. Redux is mostly used in Large scale apps.
+- Install Redux toolkit and React-Redux
+
+```
+install @reduxjs/toolKit and install react-redux
+```
+
+```
+Process invloved:
+1. Build the store
+2. Connect the store to the app
+3. Create a store slice.
+4. Dispatch an action and Reducer function to update the data
+5. Read data with Selector.
+```

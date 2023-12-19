@@ -1,6 +1,15 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
+
 const ItemList = ({ data }) => {
   const imgBaseURL =
     "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/";
+
+  const dispatch = useDispatch();
+
+  const handleClickAddItemToCart = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div>
@@ -29,15 +38,23 @@ const ItemList = ({ data }) => {
                 {a.card.info.description ? a.card.info.description : ""}
               </p>
             </div>
-            {a.card.info.imageId ? (
-              <img
-                src={imgBaseURL + a.card.info.imageId}
-                alt="YYT"
-                className="w-20 h-14 mr-1 mt-2"
-              ></img>
-            ) : (
-              <p></p>
-            )}
+            <div>
+              <button
+                className="text-sm font-medium text-green-700 bg-white border border-solid border-green-700 shadow-md absolute px-5 mx-1 rounded-md hover:text-white hover:bg-green-700"
+                onClick={() => handleClickAddItemToCart(a)}
+              >
+                ADD
+              </button>
+              {a.card.info.imageId ? (
+                <img
+                  src={imgBaseURL + a.card.info.imageId}
+                  alt="YYT"
+                  className="w-20 h-14 mr-1 mt-2"
+                ></img>
+              ) : (
+                <p></p>
+              )}
+            </div>
           </div>
           <div>
             <hr></hr>
